@@ -4,6 +4,7 @@ const app = express()
 
 
 app.use(express.json())
+app.use(express.static('dist'))
 
 morgan.token('body', (req) => {
     if (req.method === 'POST') {
@@ -93,6 +94,10 @@ app.post('/api/persons', (req, res) => {
     people = people.concat(person)
     res.json(person)
 })
+
+// app.put('/api/persons/:id', (req, res) => {
+//    const id = req.params.id
+// })
 
 
 const unknownEndpoint = (request, response) => {
